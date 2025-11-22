@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-image: url('/image/erp.png');
+            background-size: cover;
+            position: center"
+        }
+
+        .sidebar {
+            height: 100vh;
+            position: fixed;
+            width: 220px;
+            background: rgb(180, 180, 180);
+            
+            padding-top: 1rem;
+        }
+
+            .sidebar a {
+                display: block;
+                padding: 10px 20px;
+                color: #000;
+                text-decoration: none;
+            }
+
+                .sidebar a:hover {
+                    background-color: #e2e6ea;
+                }
+
+        .main-content {
+            margin-left: 220px;
+            padding: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #f8f9fa;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h5 class="text-center">DashBoard</h5>
+        <a href="@Url.Action("Index","Home")">🏠 Home</a>
+        <a href="@Url.Action("Index", "Search")"> 🔍 Search</a>
+        <a href="@Url.Action("Customer", "Admin")">🧑‍💼 Customer</a>
+        <a href="@Url.Action("Employee", "employee")">🧑‍💼 Employee</a>
+        <a href="@Url.Action("Report", "CRMReport")">📂 Report</a>
+        <a href="/Auth/Logout" class="btn btn-danger logout-btn">Logout</a>
+    </div>
+    <div class="main-content">
+        </nav>
+
+    </div>
+
+    <footer>
+        Copyright © 2023. Design & Developed By Satyam
+    </footer>
+
+</body>
+</html>

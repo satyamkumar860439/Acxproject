@@ -1,0 +1,60 @@
+﻿@model Acxproject.Models.Customer
+
+@{
+    ViewData["Title"] = "Customer Details";
+}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-primary text-white text-center">
+                    <h2>Customer Details</h2>
+                </div>
+                <div class="card-body">
+                    <div class="text-center mb-4">
+                        @if (!string.IsNullOrEmpty(Model.Image))
+                        {
+                            <img src="@Model.Image" class="rounded-circle img-thumbnail" style="width:150px; height:150px; object-fit:cover;" alt="Customer Image" />
+                        }
+                        else
+                        {
+                            <img src="https://via.placeholder.com/150" class="rounded-circle img-thumbnail" alt="No Image" />
+                        }
+                    </div>
+
+                    <dl class="row">
+                        <dt class="col-sm-4 fw-bold">Name</dt>
+                        <dd class="col-sm-8">@Model.Name</dd>
+
+                        <dt class="col-sm-4 fw-bold">Phone</dt>
+                        <dd class="col-sm-8">@Model.Phone</dd>
+
+                        <dt class="col-sm-4 fw-bold">Email</dt>
+                        <dd class="col-sm-8">@Model.Email</dd>
+
+                        <dt class="col-sm-4 fw-bold">Password</dt>
+                        <dd class="col-sm-8">••••••••</dd>
+
+                        <dt class="col-sm-4 fw-bold">Country</dt>
+                        <dd class="col-sm-8">@Model.Country</dd>
+
+                        <dt class="col-sm-4 fw-bold">City</dt>
+                        <dd class="col-sm-8">@Model.City</dd>
+
+                        <dt class="col-sm-4 fw-bold">Address</dt>
+                        <dd class="col-sm-8">@Model.Address</dd>
+
+                        <dt class="col-sm-4 fw-bold">Gender</dt>
+                        <dd class="col-sm-8">@Model.Gender</dd>
+                    </dl>
+                </div>
+                <div class="card-footer text-center">
+                    <a asp-action="Customer" class="btn btn-outline-primary">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

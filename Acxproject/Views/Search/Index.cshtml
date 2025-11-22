@@ -1,0 +1,140 @@
+﻿@model Acxproject.Models.CRMReport
+@{
+    ViewData["Title"] = "CRM Dashboard";
+}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+
+<style>
+    .search-box {
+        border-radius: 40px;
+        overflow: hidden;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+
+        .search-box input {
+            border: none;
+            padding: 14px;
+            font-size: 17px;
+        }
+
+        .search-box button {
+            border-radius: 0;
+            padding: 0 25px;
+        }
+
+    .section-title {
+        position: relative;
+        margin: 40px 0 20px;
+        font-weight: bold;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+    }
+
+        .section-title::after {
+            content: "";
+            width: 100px;
+            height: 3px;
+            background: #007bff;
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            border-radius: 2px;
+        }
+
+    .dash-card {
+        border-radius: 18px;
+        padding: 40px 20px;
+        background: #f8f9fa;
+        transition: 0.3s;
+        cursor: pointer;
+    }
+
+        .dash-card:hover {
+            transform: translateY(-5px);
+            background: #ffffff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+    .search-result-item {
+        border-radius: 12px !important;
+        margin-bottom: 8px;
+    }
+</style>
+
+<div class="container mt-5">
+
+    <h1 class="text-center mb-4 fw-bold">CRM Dashboard</h1>
+
+    <!-- 🔍 Search Bar -->
+    <form method="get" asp-controller="Search" asp-action="Index" class="mb-5">
+        <div class="input-group search-box">
+            <input type="text" name="search" class="form-control" placeholder="Search customers, employees..." />
+            <button class="btn btn-primary" type="submit">
+                <i class="bi bi-search fs-5"></i>
+            </button>
+        </div>
+    </form>
+
+    <!-- 🔎 Search Results -->
+    @if (!string.IsNullOrEmpty(Context.Request.Query["search"]))
+    {
+        <h3 class="section-title">Search Results</h3>
+
+        <!-- Customers -->
+        @if (Model.RecentCustomers.Any())
+        {
+            <h5 class="fw-semibold mt-3">Customers</h5>
+            <ul class="list-group mb-3">
+                @foreach (var item in Model.RecentCustomers)
+                {
+                    <li class="list-group-item search-result-item shadow-sm">
+                        <strong>@item.Name</strong> — @item.Email
+                    </li>
+                }
+            </ul>
+        }
+
+        <!-- Employees -->
+        @if (Model.RecentEmployees.Any())
+        {
+            <h5 class="fw-semibold mt-3">Employees</h5>
+            <ul class="list-group mb-3">
+                @foreach (var item in Model.RecentEmployees)
+                {
+                    <li class="list-group-item search-result-item shadow-sm">
+                        <strong>@item.FirstName</strong> — @item.Email
+                    </li>
+                }
+            </ul>
+        }
+
+        @if (!Model.RecentCustomers.Any() && !Model.RecentEmployees.Any())
+        {
+            <p class="text-danger">No results found.</p>
+        }
+    }
+
+    <!-- Dashboard Cards -->
+    <h3 class="section-title mt-5">Quick Navigation</h3>
+
+    <div class="row justify-content-center g-4 mt-1">
+        <div class="col-md-3">
+            <a asp-controller="Admin" asp-action="Customer" class="text-decoration-none">
+                <div class="card dash-card text-center shadow-sm">
+                    <i class="bi bi-people-fill fs-1 text-primary"></i>
+                    <h3 class="mt-2">Customers</h3>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-3">
+            <a asp-controller="Employee" asp-action="Employee" class="text-decoration-none">
+                <div class="card dash-card text-center shadow-sm">
+                    <i class="bi bi-person-badge-fill fs-1 text-success"></i>
+                    <h3 class="mt-2">Employees</h3>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

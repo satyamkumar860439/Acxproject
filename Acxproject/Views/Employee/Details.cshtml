@@ -1,0 +1,105 @@
+﻿@model Acxproject.Models.Employee
+
+@{
+    ViewData["Title"] = "Employee Details";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h2 class="mb-0">Employee Details</h2>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3 font-weight-bold text-secondary">
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.FirstName)
+                </dd>
+
+                <dt class="col-sm-3 font-weight-bold text-secondary">
+                    @Html.DisplayNameFor(model => model.LastName)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.LastName)
+                </dd>
+
+                <dt class="col-sm-3 font-weight-bold text-secondary">
+                    @Html.DisplayNameFor(model => model.Email)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
+
+                <dt class="col-sm-3 font-weight-bold text-secondary">
+                    @Html.DisplayNameFor(model => model.Phone)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Phone)
+                </dd>
+
+                <dt class="col-sm-3 font-weight-bold text-secondary">
+                    @Html.DisplayNameFor(model => model.Position)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Position)
+                </dd>
+
+                <dt class="col-sm-3 font-weight-bold text-secondary">
+                    @Html.DisplayNameFor(model => model.Department)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Department)
+                </dd>
+
+                <dt class="col-sm-3 font-weight-bold text-secondary">
+                    @Html.DisplayNameFor(model => model.Address)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Address)
+                </dd>
+
+                <dt class="col-sm-3 font-weight-bold text-secondary">
+                    @Html.DisplayNameFor(model => model.DateOfBirth)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.DateOfBirth)
+                </dd>
+
+                <dt class="col-sm-3 font-weight-bold text-secondary">
+                    @Html.DisplayNameFor(model => model.Gender)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Gender)
+                </dd>
+
+                <dt class="col-sm-3 font-weight-bold text-secondary">
+                    @Html.DisplayNameFor(model => model.HireDate)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.HireDate)
+                </dd>
+            </dl>
+        </div>
+        <div class="card-footer text-right">
+            
+                <a asp-action="Employee" class="btn btn-secondary">Back to List</a>
+            
+        </div>
+    </div>
+</div>
+
+<style>
+    .card-body dt {
+        margin-bottom: 0.5rem;
+    }
+
+    .card-body dd {
+        margin-bottom: 1rem;
+    }
+
+    .card-footer a {
+        min-width: 100px;
+    }
+</style>

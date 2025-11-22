@@ -1,0 +1,160 @@
+﻿@model Acxproject.Models.CRMReport
+
+<style>
+    .crm-card {
+        border-radius: 12px;
+        padding: 25px;
+        background: white;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        transition: 0.3s;
+    }
+
+        .crm-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+        }
+
+    h2, h3 {
+        font-weight: 700;
+        color: #2c3e50;
+    }
+
+    th {
+        background: #0d6efd !important;
+        color: white !important;
+    }
+
+    td {
+        vertical-align: middle !important;
+    }
+
+    .section-title {
+        margin-top: 40px;
+        margin-bottom: 15px;
+        font-weight: bold;
+        color: #1e3d59;
+        border-left: 5px solid #0d6efd;
+        padding-left: 10px;
+        font-size: 22px;
+    }
+
+    .table-container {
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        background: white;
+        padding: 10px;
+    }
+</style>
+
+<div class="container mt-4">
+
+    <h2 class="mb-4 text-center">📊 CRM Summary Report</h2>
+
+    <!-- Summary Cards -->
+    <div class="row mb-4">
+        <div class="col-md-6 mb-3">
+            <div class="crm-card text-center">
+                <h4>Total Customers</h4>
+                <h1 class="text-primary fw-bold">@Model.TotalCustomers</h1>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <div class="crm-card text-center">
+                <h4>Total Employees</h4>
+                <h1 class="text-success fw-bold">@Model.TotalEmployees</h1>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Customers -->
+    <h3 class="section-title">Recent Customers</h3>
+
+    <div class="table-container">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Country</th>
+                    <th>City</th>
+                    <th>Address</th>
+                    <th>Image</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.RecentCustomers != null && Model.RecentCustomers.Any())
+                {
+                    foreach (var c in Model.RecentCustomers)
+                    {
+                        <tr>
+                            <td>@c.Name</td>
+                            <td>@c.Phone</td>
+                            <td>@c.Email</td>
+                            <td>@c.Password</td>
+                            <td>@c.Country</td>
+                            <td>@c.City</td>
+                            <td>@c.Address</td>
+                            <td>@c.Image</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr><td colspan="8" class="text-center">No customers found.</td></tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Recent Employees -->
+    <h3 class="section-title">Recent Employees</h3>
+
+    <div class="table-container">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Position</th>
+                    <th>Department</th>
+                    <th>Address</th>
+                    <th>Date of Birth</th>
+                    <th>Gender</th>
+                    <th>Hire Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.RecentEmployees != null && Model.RecentEmployees.Any())
+                {
+                    foreach (var e in Model.RecentEmployees)
+                    {
+                        <tr>
+                            <td>@e.FirstName</td>
+                            <td>@e.LastName</td>
+                            <td>@e.Email</td>
+                            <td>@e.Phone</td>
+                            <td>@e.Position</td>
+                            <td>@e.Department</td>
+                            <td>@e.Address</td>
+                            <td>@e.DateOfBirth.ToShortDateString()</td>
+                            <td>@e.Gender</td>
+                            <td>@e.HireDate.ToShortDateString()</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr><td colspan="10" class="text-center">No employees found.</td></tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
